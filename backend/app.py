@@ -5,7 +5,9 @@ import numpy as np
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests from the frontend
+
+# Allow requests only from https://ml-project-red.vercel.app/
+CORS(app, origins="https://ml-project-red.vercel.app/")
 
 # Load the trained model and scaler
 def load_model_and_scaler():

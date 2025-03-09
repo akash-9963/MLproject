@@ -23,28 +23,28 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Check if any field is empty
     if (Object.values(formData).includes("")) {
       setError("Please fill in all fields!");
       return;
     }
-
+  
     setLoading(true); // Set loading to true before sending the request
     setError(""); // Clear any previous error
-
+  
     try {
-      // Sending form data to backend for crop recommendation
-      const response = await fetch("http://localhost:5000/api/recommend_crop", {
+      // Sending form data to the backend for crop recommendation
+      const response = await fetch("https://mlproject-1-vwv8.onrender.com/api/recommend_crop", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
+  
       const data = await response.json();
-
+  
       if (data.recommended_crop) { // Correct field name from backend
         setRecommendedCrop(data.recommended_crop); // Update recommended crop
       } else {
@@ -56,7 +56,7 @@ function App() {
       setLoading(false); // Set loading to false after the request completes
     }
   };
-
+  
   return (
     <div className="App">
       <h1>Crop Recommendation System</h1>
