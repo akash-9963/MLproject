@@ -8,7 +8,7 @@ import os  # Import os module to handle environment variables
 app = Flask(__name__)
 
 # Allow requests from any origin (you can modify this for production use)
-CORS(app, origins="*")
+CORS(app, origins="https://ml-project-red.vercel.app")
 
 # Load the trained model and scaler
 def load_model_and_scaler():
