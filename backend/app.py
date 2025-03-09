@@ -7,7 +7,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Allow requests only from https://ml-project-red.vercel.app/
-CORS(app, origins="https://ml-project-red.vercel.app/")
+CORS(app, origins="*")
 
 # Load the trained model and scaler
 def load_model_and_scaler():
