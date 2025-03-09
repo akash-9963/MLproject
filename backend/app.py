@@ -3,10 +3,11 @@ from flask_cors import CORS
 import pickle
 import numpy as np
 import pandas as pd
+import os  # Import os module to handle environment variables
 
 app = Flask(__name__)
 
-# Allow requests only from https://ml-project-red.vercel.app/
+# Allow requests from any origin (you can modify this for production use)
 CORS(app, origins="*")
 
 # Load the trained model and scaler
@@ -86,5 +87,9 @@ def recommend_crop():
         print("Error in /api/recommend_crop:", str(e))
         return jsonify({"error": "An error occurred while processing the request."}), 500
 
+# Run the Flask app on the port from the environment or default to 5000
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Get the port from the environment variable, or default to 5000 if not found
+    port = int(os.environ.get('PORT', 5000))
+    # Make sure to listen on all interfaces (0.0.0.0) for Render to route the traffic
+    app.run(debug=True, host='0.0.0.0', port=port)
