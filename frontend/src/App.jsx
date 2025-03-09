@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import wheatLogo from './assets/wheat-logo.png'; // Replace with actual logo paths
-import riceLogo from './assets/rice-logo.png';  // Replace with actual logo paths
-
 function App() {
   const [formData, setFormData] = useState({
     nitrogen: "",
